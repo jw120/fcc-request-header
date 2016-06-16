@@ -1,0 +1,16 @@
+{
+  "name": "request-header",
+  "version": "1.0.0",
+  "description": "Request header microservice exercise for FreeCodeCamp",
+  "engines": {
+    "node": "6.2.1"
+  },
+  "repository": {
+  },
+  "author": "JW",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.4",
+    "request-ip": "^1.2.2"
+  }
+}
