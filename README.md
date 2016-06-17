@@ -6,7 +6,6 @@ Testing with Mocha, Chai/Expect and Fetch.
 
 ## Actions
 
-* TODO Tests
 * TODO Root page
 * TODO Setup deploying
 
