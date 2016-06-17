@@ -1,7 +1,4 @@
-/** Provides function to create and start an Express server */
-
 import * as Express from "express";
-import { Server } from "http";
 import { getClientIp } from "request-ip";
 
 interface WhoAmI {
@@ -10,32 +7,29 @@ interface WhoAmI {
   software: string;
 }
 
-/** Create and start a timestamp server on the given port (which is returned) */
-export function startServer(port: number): Server {
+const app: Express.Application = Express();
 
-  const app: Express.Application = Express();
+const router: Express.Router = Express.Router();
+router.get("/", function (req: Express.Request, res: Express.Response): void {
+  let sendFileOptions: any = {
+    root: __dirname
+  };
+  res.sendFile("/root.html", sendFileOptions);
+});
+router.get("/api/whoami", function(req: Express.Request, res: Express.Response): void {
+  let whoami: WhoAmI = {
+    ipaddress: getClientIp(req),
+    language: beforeFirstComma(req.headers["accept-language"]),
+    software: betweenFirstParens(req.headers["user-agent"])
+  };
+  res.send(whoami);
+});
 
-  const router: Express.Router = Express.Router();
-  router.get("/", function (req: Express.Request, res: Express.Response): void {
-    let sendFileOptions: any = {
-      root: __dirname
-    };
-    res.sendFile("/root.html", sendFileOptions);
-  });
-  router.get("/api/whoami", function(req: Express.Request, res: Express.Response): void {
-    let whoami: WhoAmI = {
-      ipaddress: getClientIp(req),
-      language: beforeFirstComma(req.headers["accept-language"]),
-      software: betweenFirstParens(req.headers["user-agent"])
-    };
-    res.send(whoami);
-  });
+app.use("/", router);
 
-  app.use("/", router);
-
-  return app.listen(port);
-
-}
+let port: number = process.env.PORT || 8080;
+app.listen(port);
+console.log("Request header server launched on port " + port);
 
 // Helper functions
 function beforeFirstComma(s: string): string {

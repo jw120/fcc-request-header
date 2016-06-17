@@ -6,8 +6,9 @@ Testing with Mocha, Chai/Expect and Fetch.
 
 ## Actions
 
-* TODO Root page
 * TODO Setup deploying
+* TODO Check format of headers in IETF spec etcs
+* TODO Check in
 
 ## Ways to run
 

@@ -9,11 +9,21 @@
     <title>FreeCodeCamp Timestamp Microservice Exercise</title>
 
     <!-- Not using a css file to simplify the static file serving -->
+    <!-- Styles to look somewhat like github's rendering of README.md files -->
     <style type="text/css">
 
         body {
-            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+            font-size: 16px;
+            line-height: 1.4;
             margin: 25px;
+        }
+
+        pre {
+            padding: 16px;
+            font-size: 85%;
+            background-color: #f7f7f7;
+            font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
         }
 
         .footer {
@@ -28,48 +38,32 @@
 
 <body>
 
-<h1>FreeCodeCamp Back End Exercise: Timestamp Microservice</h1>
+<h1>FreeCodeCamp Back End Exercise: Request Header Microservice</h1>
 
-<h2>Spec (&ldquo;User stories&rdquo;)</h2>
-<ol>
-    <li>
-        I can pass a string as a parameter, and it will check to see whether that string contains either a unix timestamp or a natural language date (example: January 1, 2016)
-    </li>
-    <li>
-        If it does, it returns both the Unix timestamp and the natural language form of that date.
-    </li>
-    <li>
-        If it does not contain a date or Unix timestamp, it returns null for those properties.
-    </li>
-</ol>
+Microservice API which extracts some basic information from a GET request's headers and returns as JSON.
 
-<h2>Examples</h2>
-<ul>
-    <li>
-        <a href="/December%2015,%202015">December 15, 2015</a>
-    </li>
-    <li>
-        <a href="/1450137600">1450137600</a>
-    </li>
-</ul>
+<h2>Example</h2>
 
 <p>
-Both of these examples are expected to return
-<code>{"unix":1450137600,"natural":"December 15, 2015"}</code>
+<a href="/api/whoami">/api/whoami</a>
+returns
+<pre>
+{"ipaddress":"::1","language":"en-US","software":"Macintosh; Intel Mac OS X 10_11_5"}
+</pre>
+(values depend on your location and browser)
 </p>
-
 
 <h2>References</h2>
 <ul>
     <li>
-        FreeCodeCamp's <a href="https://www.freecodecamp.com/challenges/timestamp-microservice">description</a>
+        FreeCodeCamp's <a href="https://www.freecodecamp.com/challenges/request-header-parser-microservice">description</a>
         of this exercise
     </li>
     <li>
-        FreeCodeCamp's <a href="https://timestamp-ms.herokuapp.com/">implementation</a>
+        FreeCodeCamp's <a href="https://cryptic-ridge-9197.herokuapp.com/api/whoami/">implementation</a>
     </li>
     <li>
-        <a href="https://github.com/jw120/fcc-timestamp">Source code</a> for this implementation
+        <a href="https://github.com/jw120/fcc-request-header">Source code</a> for this implementation
     </li>
 </ul>
 
